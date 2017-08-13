@@ -1,0 +1,36 @@
+body{
+  background-color: #000;
+  color: #f12;  
+  margin: 0;
+  height: 100%;
+  font-family: monospace;
+}
+
+.App{
+  display: grid;
+  grid-template-rows: 20vh 20vh 60vh;
+  grid-template-columns: 1fr 4fr;
+  grid-template-areas:
+    "head head"
+    "input input"
+    "online message";
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.App .message, .App .name {
+  overflow-y: scroll;
+}
+
+.App, .App > * {
+  padding: 0 5px;
+  margin: 0;
+}
+
+.App > *::-webkit-scrollbar {
+  display: none;
+}
+
+.App ul {
+  list-style: none;
+}

@@ -1,0 +1,14 @@
+.name{
+  grid-area: online;
+}
+
+.name h4 {
+  margin: 0px;
+  background: red;
+  color: black;
+  position: fixed;
+}
+
+.name li:nth-child(2) {
+  margin-top: 1.5em;
+}

@@ -1,9 +1,10 @@
 import { observable } from 'mobx'
-
-var Store = {
-  name: '',
+const Store = {
+  userref: null,
   mess: '',
-  arr: []
+  name: '',
+  namArr: [],
+  messageArr: []
 }
 
 export default observable(Store)

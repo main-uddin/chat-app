@@ -18,9 +18,12 @@
   },
   "dependencies": {
     "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "firebase": "^4.2.0",
     "mobx": "^3.2.2",
     "mobx-react": "^4.2.2",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "style-loader": "^0.18.2"
   }
 }

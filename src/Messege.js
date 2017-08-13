@@ -1,34 +1,41 @@
 import React, { Component } from 'react'
-import { observer } from 'mobx-react'
+import { inject, observer } from 'mobx-react'
 import Store from './Store'
 
 class Messege extends Component {
   render () {
     return (
-      <div>
-        <form
-          onSubmit={e => {
-            e.preventDefault()
-            Store.arr.push({
-              name: Store.name,
-              messege: Store.mess
-            })
-          }}
-        >
-          Messege:<input
+      <form
+        style={{ gridArea: 'input' }}
+        onSubmit={e => {
+          e.preventDefault()
+          this.props.firebase.database().ref('message-list').push({
+            name: Store.name,
+            messege: Store.mess
+          })
+          Store.mess = ''
+        }}
+      >
+        <label>
+          Message: <input
+            style={{ gridArea: 'input' }}
             type='text'
             onChange={e => {
               Store.mess = e.target.value
             }}
+            value={Store.mess}
+            autoFocus
           />
-          <button type='submit'>sumbit</button>
-        </form>
-        <ul>
-          {Store.arr.map(e => <li>{e.name} : {e.messege}</li>)}
-        </ul>
-      </div>
+        </label>
+        <button type='submit'>Submit</button>
+      </form>
     )
+  }
+  componentDidMount () {
+    this.props.firebase.database().ref('message-list').on('value', data => {
+      if (data.val()) Store.messageArr = Object.values(data.val()).reverse()
+    })
   }
 }
 
-export default observer(Messege)
+export default inject('firebase')(observer(Messege))
